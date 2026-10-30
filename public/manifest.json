@@ -1,0 +1,16 @@
+{
+  "name": "Gajjar Hub",
+  "short_name": "Gajjar Hub",
+  "description": "Everything hostel, in one place.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#131314",
+  "theme_color": "#222223",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ]
+}
