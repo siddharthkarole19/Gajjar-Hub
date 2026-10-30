@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { MessageCircleWarning as MessageCircleAlert, Bell, Utensils, ArrowRight } from "lucide-react";
+import { MessageCircleWarning as MessageCircleAlert, Bell, Utensils, ArrowRight, Loader2 } from "lucide-react";
 import { EyebrowBadge } from "../components/Badge";
 import { HeroDecoration } from "../components/HeroDecoration";
 import { SegmentedControl } from "../components/SegmentedControl";
@@ -15,11 +15,18 @@ import { format } from "date-fns";
 
 export default function HomePage() {
   const router = useRouter();
-  const { profile } = useAuth();
+  const { user, profile, isLoading } = useAuth();
   const { notices, getMealItems } = useData();
 
   const [selectedMess, setSelectedMess] = useState<1 | 2>(1);
   const [isComplaintSheetOpen, setIsComplaintSheetOpen] = useState(false);
+
+  // Require login: Redirect unauthenticated visitors to /login first
+  useEffect(() => {
+    if (!isLoading && !user && !profile) {
+      router.replace("/login");
+    }
+  }, [user, profile, isLoading, router]);
 
   useEffect(() => {
     if (profile?.mess) {
@@ -50,6 +57,22 @@ export default function HomePage() {
   const dinnerItems = getMealItems(selectedMess, dbDayOfWeek, "dinner");
 
   const latestNotices = notices.slice(0, 4);
+
+  if (isLoading || (!user && !profile)) {
+    return (
+      <div className="min-h-[calc(100vh-140px)] flex flex-col items-center justify-center p-6 text-center">
+        <div className="flex flex-col items-center gap-3.5">
+          <div className="w-12 h-12 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center shadow-[0_0_24px_rgba(107,149,255,0.2)]">
+            <Loader2 className="w-6 h-6 text-primary animate-spin" />
+          </div>
+          <div className="flex flex-col gap-1">
+            <span className="font-semibold text-sm text-[#E5E7EB]">Gajjar Hub</span>
+            <span className="font-mono text-xs text-text-dim">Verifying session...</span>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="relative min-h-screen pb-16 overflow-hidden">
