@@ -16,7 +16,7 @@ import { format } from "date-fns";
 
 export default function HomePage() {
   const router = useRouter();
-  const { user, profile, isLoading } = useAuth();
+  const { user, profile, isLoading, isCaptain } = useAuth();
   const { notices, getMealItems } = useData();
 
   const [selectedMess, setSelectedMess] = useState<1 | 2>(1);
@@ -47,12 +47,22 @@ export default function HomePage() {
     };
   }, []);
 
-  // Require login: Redirect unauthenticated visitors to /login first
+  // Require login & completed onboarding:
+  // - If not logged in -> redirect to /login
+  // - If student hasn't completed room and mess info -> redirect to /onboarding
   useEffect(() => {
-    if (!isLoading && !user && !profile) {
-      router.replace("/login");
+    if (!isLoading) {
+      if (!user && !profile) {
+        router.replace("/login");
+      } else {
+        const isManagement = isCaptain || user?.email?.toLowerCase().includes("admin") || user?.email?.toLowerCase().includes("captain");
+        const needsOnboarding = !isManagement && (!profile?.room_no || !profile.room_no.trim());
+        if (needsOnboarding) {
+          router.replace("/onboarding");
+        }
+      }
     }
-  }, [user, profile, isLoading, router]);
+  }, [user, profile, isLoading, isCaptain, router]);
 
   useEffect(() => {
     if (profile?.mess) {
@@ -79,12 +89,14 @@ export default function HomePage() {
 
   const breakfastItems = getMealItems(selectedMess, dbDayOfWeek, "breakfast");
   const lunchItems = getMealItems(selectedMess, dbDayOfWeek, "lunch");
-  const snacksItems = getMealItems(selectedMess, dbDayOfWeek, "snacks");
   const dinnerItems = getMealItems(selectedMess, dbDayOfWeek, "dinner");
 
   const latestNotices = notices.slice(0, 4);
 
-  if (isLoading || (!user && !profile)) {
+  const isManagement = isCaptain || user?.email?.toLowerCase().includes("admin") || user?.email?.toLowerCase().includes("captain");
+  const needsOnboarding = (user || profile) && !isManagement && (!profile?.room_no || !profile.room_no.trim());
+
+  if (isLoading || (!user && !profile) || needsOnboarding) {
     return (
       <div className="min-h-[calc(100vh-140px)] flex flex-col items-center justify-center p-6 text-center">
         <div className="flex flex-col items-center gap-3.5">
@@ -93,7 +105,9 @@ export default function HomePage() {
           </div>
           <div className="flex flex-col gap-1">
             <span className="font-semibold text-sm text-[#E5E7EB]">Gajjar Hub</span>
-            <span className="font-mono text-xs text-text-dim">Verifying session...</span>
+            <span className="font-mono text-xs text-text-dim">
+              {needsOnboarding ? "Redirecting to profile allocation..." : "Verifying session..."}
+            </span>
           </div>
         </div>
       </div>
@@ -282,19 +296,6 @@ export default function HomePage() {
                   <p className="text-[16px] sm:text-[17px] text-[#E5E7EB] leading-snug">
                     {lunchItems.length > 0 ? (
                       lunchItems.join(", ")
-                    ) : (
-                      <span className="text-text-dim italic">Not updated yet</span>
-                    )}
-                  </p>
-                </div>
-
-                <div className="py-4 sm:py-5 row-divider flex flex-col gap-1.5">
-                  <span className="font-mono text-[12px] font-semibold uppercase tracking-wider text-primary">
-                    SNACKS
-                  </span>
-                  <p className="text-[16px] sm:text-[17px] text-[#E5E7EB] leading-snug">
-                    {snacksItems.length > 0 ? (
-                      snacksItems.join(", ")
                     ) : (
                       <span className="text-text-dim italic">Not updated yet</span>
                     )}

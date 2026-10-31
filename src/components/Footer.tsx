@@ -9,23 +9,18 @@ export const Footer: React.FC = () => {
         <div className="flex items-center gap-2 text-center sm:text-left">
           <span>© Gajjar Hub</span>
           <span>•</span>
-          <span>Campus Hostel Portal</span>
+          <span>Our Hostel</span>
         </div>
 
         <div className="flex items-center gap-2 flex-wrap justify-center sm:justify-end">
-          <span>Warden office:</span>
-          <a
-            href="tel:+919876543210"
-            className="text-text-muted hover:text-primary transition-colors"
-          >
-            +91 98765 43210
-          </a>
+          <span>Developer</span>
+          
           <span>•</span>
           <a
-            href="mailto:warden.office@hostel.edu"
+            href="mailto:usedman0705@gmail.com"
             className="text-text-muted hover:text-primary transition-colors"
           >
-            warden.office@hostel.edu
+            usedman0705@gmail.com
           </a>
         </div>
       </div>

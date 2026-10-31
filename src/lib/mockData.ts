@@ -132,73 +132,59 @@ export const MOCK_MESS_MENUS: MessMenuItem[] = [
   // Mess 1 - Day 1 to 7
   { mess: 1, day_of_week: 1, meal: "breakfast", items: ["Poha", "Sprouts", "Boiled Eggs", "Tea / Coffee", "Banana"] },
   { mess: 1, day_of_week: 1, meal: "lunch", items: ["Dal Tadka", "Jeera Rice", "Aloo Gobi", "Roti", "Curd", "Salad"] },
-  { mess: 1, day_of_week: 1, meal: "snacks", items: ["Veg Cutlet", "Green Chutney", "Tea / Coffee"] },
   { mess: 1, day_of_week: 1, meal: "dinner", items: ["Paneer Butter Masala", "Tandoori Roti", "Veg Pulao", "Dal Fry", "Gulab Jamun"] },
 
   { mess: 1, day_of_week: 2, meal: "breakfast", items: ["Idli Sambhar", "Coconut Chutney", "Boiled Eggs", "Tea / Coffee"] },
   { mess: 1, day_of_week: 2, meal: "lunch", items: ["Rajma Masala", "Steamed Rice", "Bhindi Masala", "Chapati", "Boondi Raita"] },
-  { mess: 1, day_of_week: 2, meal: "snacks", items: ["Samosa", "Tamarind Chutney", "Tea"] },
   { mess: 1, day_of_week: 2, meal: "dinner", items: ["Mix Veg Kolhapuri", "Dal Makhani", "Jeera Rice", "Roti", "Fruit Custard"] },
 
   { mess: 1, day_of_week: 3, meal: "breakfast", items: ["Aloo Paratha", "Curd", "Pickle", "Tea / Coffee"] },
   { mess: 1, day_of_week: 3, meal: "lunch", items: ["Chole Bhature", "Pulao Rice", "Cucumber Salad", "Fried Chillies"] },
-  { mess: 1, day_of_week: 3, meal: "snacks", items: ["Onion Pakoda", "Masala Chai"] },
   { mess: 1, day_of_week: 3, meal: "dinner", items: ["Mushroom Masala / Egg Curry", "Plain Rice", "Tawa Roti", "Dal Tadka", "Ice Cream"] },
 
   { mess: 1, day_of_week: 4, meal: "breakfast", items: ["Upma", "Sambhar", "Boiled Eggs", "Bread Butter", "Tea"] },
   { mess: 1, day_of_week: 4, meal: "lunch", items: ["Kadhi Pakoda", "Khichdi", "Aloo Methi", "Roti", "Papad"] },
-  { mess: 1, day_of_week: 4, meal: "snacks", items: ["Sweet Corn Chaat", "Lemonade / Tea"] },
   { mess: 1, day_of_week: 4, meal: "dinner", items: ["Dum Aloo Kashmiri", "Yellow Dal", "Peas Pulao", "Chapati", "Kheer"] },
 
   { mess: 1, day_of_week: 5, meal: "breakfast", items: ["Masala Dosa", "Sambhar", "Tomato Chutney", "Tea / Coffee"] },
   { mess: 1, day_of_week: 5, meal: "lunch", items: ["Palak Paneer", "Dal Fry", "Steamed Basmati Rice", "Roti", "Salad"] },
-  { mess: 1, day_of_week: 5, meal: "snacks", items: ["Bread Pakoda", "Mint Chutney", "Tea"] },
   { mess: 1, day_of_week: 5, meal: "dinner", items: ["Veg Biryani", "Mirchi Ka Salan", "Raita", "Rasgulla"] },
 
   { mess: 1, day_of_week: 6, meal: "breakfast", items: ["Methi Thepla", "Chhunda", "Curd", "Boiled Eggs", "Tea"] },
   { mess: 1, day_of_week: 6, meal: "lunch", items: ["Sev Tameta", "Gujarati Dal", "Rice", "Rotli", "Chaas"] },
-  { mess: 1, day_of_week: 6, meal: "snacks", items: ["Dhokla", "Green Chutney", "Tea / Coffee"] },
   { mess: 1, day_of_week: 6, meal: "dinner", items: ["Pav Bhaji", "Butter Pav", "Chopped Onions", "Lemon", "Gulab Jamun"] },
 
   { mess: 1, day_of_week: 7, meal: "breakfast", items: ["Puri Bhaji", "Halwa", "Boiled Eggs", "Tea / Coffee"] },
   { mess: 1, day_of_week: 7, meal: "lunch", items: ["Special Thali", "Paneer Tikka", "Dal Makhani", "Naan", "Jeera Rice", "Sweet Lassi"] },
-  { mess: 1, day_of_week: 7, meal: "snacks", items: ["Bhelpuri", "Juice / Tea"] },
   { mess: 1, day_of_week: 7, meal: "dinner", items: ["Special Veg Fried Rice", "Manchurian Gravy", "Spring Rolls", "Brownie with Ice Cream"] },
 
   // Mess 2 - Day 1 to 7
   { mess: 2, day_of_week: 1, meal: "breakfast", items: ["Medu Vada", "Sambhar", "Coconut Chutney", "Filter Coffee"] },
   { mess: 2, day_of_week: 1, meal: "lunch", items: ["Tomato Rasam", "Beans Poriyal", "Steamed Rice", "Curd", "Appalam"] },
-  { mess: 2, day_of_week: 1, meal: "snacks", items: ["Banana Fritters", "Filter Coffee / Tea"] },
   { mess: 2, day_of_week: 1, meal: "dinner", items: ["Malai Kofta", "Chapati", "Ghee Rice", "Dal Tadka", "Payasam"] },
 
   { mess: 2, day_of_week: 2, meal: "breakfast", items: ["Uttapam", "Kara Chutney", "Boiled Eggs", "Coffee / Tea"] },
   { mess: 2, day_of_week: 2, meal: "lunch", items: ["Sambar Rice", "Potato Roast", "Curd Rice", "Pickle", "Papad"] },
-  { mess: 2, day_of_week: 2, meal: "snacks", items: ["Veg Sandwich", "Hot Tea / Coffee"] },
   { mess: 2, day_of_week: 2, meal: "dinner", items: ["Veg Hakka Noodles", "Chilli Paneer", "Hot & Sour Soup", "Fruit Salad"] },
 
   { mess: 2, day_of_week: 3, meal: "breakfast", items: ["Poha", "Sev", "Boiled Eggs", "Fresh Fruits", "Tea"] },
   { mess: 2, day_of_week: 3, meal: "lunch", items: ["Dal Maharani", "Steamed Rice", "Bhindi Fry", "Phulka", "Boondi Raita"] },
-  { mess: 2, day_of_week: 3, meal: "snacks", items: ["Punugulu", "Chutney", "Ginger Tea"] },
   { mess: 2, day_of_week: 3, meal: "dinner", items: ["Shahi Paneer", "Butter Naan", "Jeera Rice", "Moong Dal Halwa"] },
 
   { mess: 2, day_of_week: 4, meal: "breakfast", items: ["Rava Dosa", "Coconut Chutney", "Sambhar", "Tea / Coffee"] },
   { mess: 2, day_of_week: 4, meal: "lunch", items: ["Kashmiri Dum Aloo", "Pulao", "Tawa Paratha", "Dal Fry", "Curd"] },
-  { mess: 2, day_of_week: 4, meal: "snacks", items: ["Masala Vada", "Filter Coffee"] },
   { mess: 2, day_of_week: 4, meal: "dinner", items: ["Mix Vegetable Kurma", "Malabar Parotta", "Curd Rice", "Gulab Jamun"] },
 
   { mess: 2, day_of_week: 5, meal: "breakfast", items: ["Appam with Veg Stew", "Boiled Eggs", "Tea / Coffee"] },
   { mess: 2, day_of_week: 5, meal: "lunch", items: ["Hyderabadi Veg Biryani", "Mirchi Salan", "Onion Raita", "Sweet Boondi"] },
-  { mess: 2, day_of_week: 5, meal: "snacks", items: ["Aloo Bonda", "Chutney", "Tea"] },
   { mess: 2, day_of_week: 5, meal: "dinner", items: ["Paneer Do Pyaza", "Yellow Dal", "Rice", "Chapati", "Ice Cream"] },
 
   { mess: 2, day_of_week: 6, meal: "breakfast", items: ["Poori Masala", "Kesari Bath", "Tea / Coffee"] },
   { mess: 2, day_of_week: 6, meal: "lunch", items: ["Bisi Bele Bath", "Boondi", "Potato Chips", "Curd Rice"] },
-  { mess: 2, day_of_week: 6, meal: "snacks", items: ["Mirchi Bajji", "Masala Chai"] },
   { mess: 2, day_of_week: 6, meal: "dinner", items: ["Veg Pulao", "Dal Tadka", "Chapati", "Aloo Capsicum", "Rasmalai"] },
 
   { mess: 2, day_of_week: 7, meal: "breakfast", items: ["Chole Bhature", "Sweet Lassi", "Fresh Fruits"] },
   { mess: 2, day_of_week: 7, meal: "lunch", items: ["Special Feast", "Paneer Pasanda", "Dal Makhani", "Butter Naan", "Biryani Rice"] },
-  { mess: 2, day_of_week: 7, meal: "snacks", items: ["Dahi Puri", "Tea / Cold Drink"] },
   { mess: 2, day_of_week: 7, meal: "dinner", items: ["Pasta in Alfredo Sauce", "Garlic Bread", "Tomato Soup", "Choco Lava Cake"] },
 ];
 
@@ -221,15 +207,15 @@ export const MOCK_POLLS: Poll[] = [
   {
     id: "poll-2",
     mess: 1,
-    title: "Wednesday Snacks Menu Option",
+    title: "Wednesday Dinner Special Option",
     closes_at: new Date(Date.now() + 18 * 60 * 60 * 1000).toISOString(),
     is_closed: false,
     created_at: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString(),
     total_votes: 95,
     options: [
-      { id: "opt-21", poll_id: "poll-2", label: "Pav Bhaji with Butter Pav", sort_order: 1, vote_count: 52, percentage: 55 },
-      { id: "opt-22", poll_id: "poll-2", label: "Paneer Kathi Roll", sort_order: 2, vote_count: 31, percentage: 33 },
-      { id: "opt-23", poll_id: "poll-2", label: "Corn Cheese Sandwich", sort_order: 3, vote_count: 12, percentage: 12 },
+      { id: "opt-21", poll_id: "poll-2", label: "Paneer Lababdar with Butter Naan", sort_order: 1, vote_count: 52, percentage: 55 },
+      { id: "opt-22", poll_id: "poll-2", label: "Dal Makhani with Jeera Rice", sort_order: 2, vote_count: 31, percentage: 33 },
+      { id: "opt-23", poll_id: "poll-2", label: "Kadhai Paneer with Tawa Roti", sort_order: 3, vote_count: 12, percentage: 12 },
     ],
   },
   {

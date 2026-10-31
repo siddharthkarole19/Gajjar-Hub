@@ -35,7 +35,7 @@ const DAYS = [
   { dayOfWeek: 7, name: "Sunday" },
 ];
 
-const MEALS: MealType[] = ["breakfast", "lunch", "snacks", "dinner"];
+const MEALS: MealType[] = ["breakfast", "lunch", "dinner"];
 
 function MessContent() {
   const searchParams = useSearchParams();

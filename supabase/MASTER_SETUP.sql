@@ -67,7 +67,7 @@ create table if not exists public.mess_menu (
   id uuid primary key default gen_random_uuid(),
   mess integer not null check (mess in (1, 2)),
   day_of_week integer not null check (day_of_week between 1 and 7),
-  meal text not null check (meal in ('breakfast', 'lunch', 'snacks', 'dinner')),
+  meal text not null check (meal in ('breakfast', 'lunch', 'dinner')),
   items text[] not null default '{}',
   updated_at timestamptz default now(),
   unique (mess, day_of_week, meal)
@@ -140,73 +140,59 @@ insert into public.mess_menu (mess, day_of_week, meal, items) values
   -- Mess 1 (North/General)
   (1, 1, 'breakfast', array['Poha', 'Sprouts', 'Boiled Eggs', 'Tea / Coffee', 'Banana']),
   (1, 1, 'lunch', array['Dal Tadka', 'Jeera Rice', 'Aloo Gobi', 'Roti', 'Curd', 'Salad']),
-  (1, 1, 'snacks', array['Veg Cutlet', 'Green Chutney', 'Tea / Coffee']),
   (1, 1, 'dinner', array['Paneer Butter Masala', 'Tandoori Roti', 'Veg Pulao', 'Dal Fry', 'Gulab Jamun']),
 
   (1, 2, 'breakfast', array['Idli Sambhar', 'Coconut Chutney', 'Boiled Eggs', 'Tea / Coffee']),
   (1, 2, 'lunch', array['Rajma Masala', 'Steamed Rice', 'Bhindi Masala', 'Chapati', 'Boondi Raita']),
-  (1, 2, 'snacks', array['Samosa', 'Tamarind Chutney', 'Tea']),
   (1, 2, 'dinner', array['Mix Veg Kolhapuri', 'Dal Makhani', 'Jeera Rice', 'Roti', 'Fruit Custard']),
 
   (1, 3, 'breakfast', array['Aloo Paratha', 'Curd', 'Pickle', 'Tea / Coffee']),
   (1, 3, 'lunch', array['Chole Bhature', 'Pulao Rice', 'Cucumber Salad', 'Fried Chillies']),
-  (1, 3, 'snacks', array['Onion Pakoda', 'Masala Chai']),
   (1, 3, 'dinner', array['Egg Curry / Mushroom Masala', 'Plain Rice', 'Tawa Roti', 'Dal Tadka', 'Ice Cream']),
 
   (1, 4, 'breakfast', array['Upma', 'Sambhar', 'Boiled Eggs', 'Bread Butter', 'Tea']),
   (1, 4, 'lunch', array['Kadhi Pakoda', 'Khichdi', 'Aloo Methi', 'Roti', 'Papad']),
-  (1, 4, 'snacks', array['Sweet Corn Chaat', 'Lemonade / Tea']),
   (1, 4, 'dinner', array['Dum Aloo Kashmiri', 'Yellow Dal', 'Peas Pulao', 'Chapati', 'Kheer']),
 
   (1, 5, 'breakfast', array['Masala Dosa', 'Sambhar', 'Tomato Chutney', 'Tea / Coffee']),
   (1, 5, 'lunch', array['Palak Paneer', 'Dal Fry', 'Steamed Basmati Rice', 'Roti', 'Salad']),
-  (1, 5, 'snacks', array['Bread Pakoda', 'Mint Chutney', 'Tea']),
   (1, 5, 'dinner', array['Veg Biryani', 'Chicken Curry (Special)', 'Mirchi Ka Salan', 'Raita', 'Rasgulla']),
 
   (1, 6, 'breakfast', array['Methi Thepla', 'Chhunda', 'Curd', 'Boiled Eggs', 'Tea']),
   (1, 6, 'lunch', array['Sev Tameta', 'Gujarati Dal', 'Rice', 'Rotli', 'Chaas']),
-  (1, 6, 'snacks', array['Dhokla', 'Green Chutney', 'Tea / Coffee']),
   (1, 6, 'dinner', array['Pav Bhaji', 'Butter Pav', 'Chopped Onions', 'Lemon', 'Gulab Jamun']),
 
   (1, 7, 'breakfast', array['Puri Bhaji', 'Halwa', 'Boiled Eggs', 'Tea / Coffee']),
   (1, 7, 'lunch', array['Special Thali', 'Paneer Tikka', 'Dal Makhani', 'Naan', 'Jeera Rice', 'Sweet Lassi']),
-  (1, 7, 'snacks', array['Bhelpuri', 'Juice / Tea']),
   (1, 7, 'dinner', array['Special Veg Fried Rice', 'Manchurian Gravy', 'Spring Rolls', 'Brownie with Ice Cream']),
 
   -- Mess 2 (South/Continental)
   (2, 1, 'breakfast', array['Medu Vada', 'Sambhar', 'Coconut Chutney', 'Filter Coffee']),
   (2, 1, 'lunch', array['Tomato Rasam', 'Beans Poriyal', 'Steamed Rice', 'Curd', 'Appalam']),
-  (2, 1, 'snacks', array['Banana Fritters', 'Filter Coffee / Tea']),
   (2, 1, 'dinner', array['Malai Kofta', 'Chapati', 'Ghee Rice', 'Dal Tadka', 'Payasam']),
 
   (2, 2, 'breakfast', array['Uttapam', 'Kara Chutney', 'Boiled Eggs', 'Coffee / Tea']),
   (2, 2, 'lunch', array['Sambar Rice', 'Potato Roast', 'Curd Rice', 'Pickle', 'Papad']),
-  (2, 2, 'snacks', array['Veg Sandwich', 'Hot Tea / Coffee']),
   (2, 2, 'dinner', array['Veg Hakka Noodles', 'Chilli Paneer', 'Hot & Sour Soup', 'Fruit Salad']),
 
   (2, 3, 'breakfast', array['Poha', 'Sev', 'Boiled Eggs', 'Fresh Fruits', 'Tea']),
   (2, 3, 'lunch', array['Dal Maharani', 'Steamed Rice', 'Bhindi Fry', 'Phulka', 'Boondi Raita']),
-  (2, 3, 'snacks', array['Punugulu', 'Chutney', 'Ginger Tea']),
   (2, 3, 'dinner', array['Shahi Paneer', 'Butter Naan', 'Jeera Rice', 'Moong Dal Halwa']),
 
   (2, 4, 'breakfast', array['Rava Dosa', 'Coconut Chutney', 'Sambhar', 'Tea / Coffee']),
   (2, 4, 'lunch', array['Kashmiri Dum Aloo', 'Pulao', 'Tawa Paratha', 'Dal Fry', 'Curd']),
-  (2, 4, 'snacks', array['Masala Vada', 'Filter Coffee']),
   (2, 4, 'dinner', array['Mix Vegetable Kurma', 'Malabar Parotta', 'Curd Rice', 'Gulab Jamun']),
 
   (2, 5, 'breakfast', array['Appam with Vegetable Stew', 'Boiled Eggs', 'Tea / Coffee']),
   (2, 5, 'lunch', array['Hyderabadi Veg Biryani', 'Mirchi Salan', 'Onion Raita', 'Sweet Boondi']),
-  (2, 5, 'snacks', array['Aloo Bonda', 'Chutney', 'Tea']),
   (2, 5, 'dinner', array['Paneer Do Pyaza', 'Yellow Dal', 'Rice', 'Chapati', 'Ice Cream']),
 
   (2, 6, 'breakfast', array['Poori Masala', 'Kesari Bath', 'Tea / Coffee']),
   (2, 6, 'lunch', array['Bisi Bele Bath', 'Boondi', 'Potato Chips', 'Curd Rice']),
-  (2, 6, 'snacks', array['Mirchi Bajji', 'Masala Chai']),
   (2, 6, 'dinner', array['Veg Pulao', 'Dal Tadka', 'Chapati', 'Aloo Capsicum', 'Rasmalai']),
 
   (2, 7, 'breakfast', array['Masala Idli', 'Sambar', 'Groundnut Chutney', 'Coffee']),
   (2, 7, 'lunch', array['Curd Rice', 'Lemon Rice', 'Avial', 'Crispy Papad', 'Payasam']),
-  (2, 7, 'snacks', array['Mysore Bonda', 'Chutney', 'Tea']),
   (2, 7, 'dinner', array['Vegetable Fried Rice', 'Gobi Manchurian', 'Sweet Corn Soup', 'Vanilla Ice Cream'])
 on conflict (mess, day_of_week, meal) do update set items = excluded.items;
 

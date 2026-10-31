@@ -26,14 +26,20 @@ import {
 
 export default function LoginPage() {
   const router = useRouter();
-  const { user, profile, isLoading, signIn, signUp, resetPassword, resendConfirmationEmail } = useAuth();
+  const { user, profile, isLoading, signIn, signUp, resetPassword, resendConfirmationEmail, isCaptain } = useAuth();
 
-  // If already logged in, redirect to home page
+  // If already logged in, redirect based on onboarding completion
   useEffect(() => {
     if (!isLoading && (user || profile)) {
-      router.replace("/");
+      const isManagement = isCaptain || user?.email?.toLowerCase().includes("admin") || user?.email?.toLowerCase().includes("captain");
+      const needsOnboarding = !isManagement && (!profile?.room_no || !profile.room_no.trim());
+      if (needsOnboarding) {
+        router.replace("/onboarding");
+      } else {
+        router.replace("/");
+      }
     }
-  }, [user, profile, isLoading, router]);
+  }, [user, profile, isLoading, isCaptain, router]);
 
   // Tab: 'student' or 'management'
   const [portalType, setPortalType] = useState<"student" | "management">("student");
@@ -138,7 +144,15 @@ export default function LoginPage() {
         if (res.error) {
           setErrorMsg(res.error);
         } else {
-          router.push("/");
+          // If student needs to complete room and mess allocation, route to onboarding
+          const cleanEmail = email.trim().toLowerCase();
+          const isManagement = isCaptain || cleanEmail.includes("admin") || cleanEmail.includes("captain");
+          const needsOnboarding = !isManagement && (!profile?.room_no || !profile.room_no.trim());
+          if (needsOnboarding) {
+            router.push("/onboarding");
+          } else {
+            router.push("/");
+          }
         }
       } else if (mode === "signup") {
         if (!fullName.trim()) {

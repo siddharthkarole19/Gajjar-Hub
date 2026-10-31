@@ -108,7 +108,7 @@ export const SplashIntro: React.FC = () => {
               transition={{ duration: 0.5, delay: 0.25, ease: "easeOut" }}
               className="text-xs sm:text-sm font-mono text-text-muted tracking-wide"
             >
-              Everything hostel, in one place.
+              Everything in one place.
             </motion.p>
           </motion.div>
 

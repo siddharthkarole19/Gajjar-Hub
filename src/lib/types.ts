@@ -46,7 +46,7 @@ export interface Complaint {
   user_vote?: 1 | -1 | 0; // 1 = like, -1 = dislike, 0 = none
 }
 
-export type MealType = "breakfast" | "lunch" | "snacks" | "dinner";
+export type MealType = "breakfast" | "lunch" | "dinner";
 
 export interface MessMenuItem {
   id?: string;

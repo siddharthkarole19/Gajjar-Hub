@@ -61,7 +61,7 @@ create table if not exists public.mess_menu (
   id uuid primary key default gen_random_uuid(),
   mess integer not null check (mess in (1, 2)),
   day_of_week integer not null check (day_of_week between 1 and 7), -- 1: Mon, 7: Sun
-  meal text not null check (meal in ('breakfast', 'lunch', 'snacks', 'dinner')),
+  meal text not null check (meal in ('breakfast', 'lunch', 'dinner')),
   items text[] not null default '{}',
   updated_at timestamptz default now(),
   unique (mess, day_of_week, meal)

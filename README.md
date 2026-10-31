@@ -13,7 +13,7 @@ Built strictly according to the **Gajjar Hub Product Requirements Document (PRD 
 | :--- | :--- | :--- | :--- |
 | **`/`** | **Home** | View hero, 3 feature shortcuts, Today's menu (Mess 1 & 2), and Latest notices. Quick complaint submission. | Same + access to all management tools. |
 | **`/notices`** | **Notices & Complaints** | Read announcements. Submit complaints **only for assigned wing** (limit: 1 complaint/hour). Thumbs-up/down voting (optimistic + persistent). Delete own complaints. | Post official notices (`+ New notice`), edit/delete notices, change complaint status (`Open`, `In progress`, `Resolved`), delete any complaint. |
-| **`/mess`** | **Weekly Menu & Polls** | View 7-day repeating menu with 4 meals/day (Breakfast, Lunch, Snacks, Dinner). Auto-expands today. Vote anonymously in own mess polls. | Edit menu food items via chips modal (`Edit meal`). Create new polls (`+ New poll`), close polls early, delete polls. |
+| **`/mess`** | **Weekly Menu & Polls** | View 7-day repeating menu with 3 meals/day (Breakfast, Lunch, Dinner). Auto-expands today. Vote anonymously in own mess polls. | Edit menu food items via chips modal (`Edit meal`). Create new polls (`+ New poll`), close polls early, delete polls. |
 | **`/hs`** | **Hostel Management** | View student council & hostel leadership directory. One-tap actions: Call (`tel:`), WhatsApp (`wa.me`), Email (`mailto:`). | Add, edit, delete, and reorder leaders up and down. |
 | **`/login`** | **Authentication** | Sign up with email/password, sign in, password reset. Optional restriction to college email domain. | Sign in with elevated captain account. |
 | **`/onboarding`** | **Hostel Onboarding** | Mandatory first-time setup: Full Name, Wing selection (Wing A–D), Room number, Mess (1 or 2). | Initial profile creation. |
@@ -57,7 +57,7 @@ Want to customize the website's text, headings, descriptions, buttons, or brandi
   - **3 Feature Cards** (Lines ~109–176):
     - **Complaints Card**: Title `"Complaints"` and description `"Report an issue with your room, water, power or Wi-Fi and track its status."`
     - **Notices Card**: Title `"Notices"` and description `"Official announcements from the warden and hostel office, newest first."`
-    - **Mess Card**: Title `"Mess"` and description `"See what's served for breakfast, lunch, snacks and dinner, every day of the week."`
+    - **Mess Card**: Title `"Mess"` and description `"See what's served for breakfast, lunch, and dinner, every day of the week."`
   - **Section Titles** (Lines ~184 & ~266):
     - `"Today's menu"`
     - `"Latest notices"`
@@ -113,7 +113,7 @@ Want to customize the website's text, headings, descriptions, buttons, or brandi
 - **What you can edit**:
   - Page header: `"Weekly Menu & Polls"`
   - Tab names: `"Weekly Menu"` and `"Advisory Polls"`
-  - Meal headings: `"Breakfast"`, `"Lunch"`, `"Snacks"`, `"Dinner"`
+  - Meal headings: `"Breakfast"`, `"Lunch"`, `"Dinner"`
 
 ---
 
@@ -229,7 +229,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser. Use Mobile 
 2. Copy the entire contents of [`supabase/seed.sql`](./supabase/seed.sql) and paste it.
 3. Click **Run**. This populates:
    - Default wings (`Wing A`, `Wing B`, `Wing C`, `Wing D`).
-   - Complete 7-day breakfast, lunch, snacks, and dinner menus for both **Mess 1** and **Mess 2**.
+   - Complete 7-day breakfast, lunch, and dinner menus for both **Mess 1** and **Mess 2**.
    - Official hostel notices.
    - Initial hostel committee leaders directory.
 
@@ -311,7 +311,7 @@ Once updated, when this user signs in, they unlock the blue **CAPTAIN** badge an
 ## 📋 Website Management & Routine Maintenance
 
 ### 1. Weekly Mess Menu Rotation & Poll Application
-- Every Wednesday/Thursday, the Mess Convener creates a new poll in `/mess?tab=polls` asking residents to vote on the upcoming Sunday Feast or special snacks menu.
+- Every Wednesday/Thursday, the Mess Convener creates a new poll in `/mess?tab=polls` asking residents to vote on the upcoming Sunday Feast or special dinner menu.
 - Once the poll closes, the winner is highlighted with a gold trophy icon.
 - The Captain or Mess Convener clicks the **pencil icon** next to that meal in `/mess?tab=menu` and updates the menu items with the winning dish chips.
 
