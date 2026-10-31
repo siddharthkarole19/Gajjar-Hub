@@ -6,6 +6,7 @@ import { DataProvider } from "../context/DataContext";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { DemoRoleSwitcher } from "../components/DemoRoleSwitcher";
+import { SplashIntro } from "../components/SplashIntro";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -48,6 +49,9 @@ export default function RootLayout({
       <body className="min-h-screen bg-bg-end text-text selection:bg-primary/30 selection:text-white flex flex-col">
         <AuthProvider>
           <DataProvider>
+            {/* Minimalist Editorial Starting Intro */}
+            <SplashIntro />
+
             {/* Header */}
             <Header />
 

@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
 import { MessageCircleWarning as MessageCircleAlert, Bell, Utensils, ArrowRight, Loader2 } from "lucide-react";
 import { EyebrowBadge } from "../components/Badge";
 import { HeroDecoration } from "../components/HeroDecoration";
@@ -20,6 +21,31 @@ export default function HomePage() {
 
   const [selectedMess, setSelectedMess] = useState<1 | 2>(1);
   const [isComplaintSheetOpen, setIsComplaintSheetOpen] = useState(false);
+
+  // Coordinated slow graceful reveal with the starting animation
+  const [shouldAnimateIn, setShouldAnimateIn] = useState(false);
+
+  useEffect(() => {
+    const hasSeen = typeof window !== "undefined" ? sessionStorage.getItem("gh_intro_seen") : null;
+    if (hasSeen) {
+      setShouldAnimateIn(true);
+      return;
+    }
+
+    const onFade = () => {
+      setShouldAnimateIn(true);
+    };
+
+    window.addEventListener("gh_splash_fade", onFade);
+    const fallback = setTimeout(() => {
+      setShouldAnimateIn(true);
+    }, 1650);
+
+    return () => {
+      window.removeEventListener("gh_splash_fade", onFade);
+      clearTimeout(fallback);
+    };
+  }, []);
 
   // Require login: Redirect unauthenticated visitors to /login first
   useEffect(() => {
@@ -75,7 +101,12 @@ export default function HomePage() {
   }
 
   return (
-    <div className="relative min-h-screen pb-16 overflow-hidden">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={shouldAnimateIn ? { opacity: 1 } : { opacity: 0 }}
+      transition={{ duration: 0.9, ease: "easeOut" }}
+      className="relative min-h-screen pb-16 overflow-hidden"
+    >
       {/* Mobile top-right decoration */}
       <HeroDecoration />
 
@@ -340,6 +371,6 @@ export default function HomePage() {
         onClose={() => setIsComplaintSheetOpen(false)}
         onSuccess={() => router.push("/notices?tab=complaints")}
       />
-    </div>
+    </motion.div>
   );
 }

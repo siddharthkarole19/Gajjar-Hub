@@ -49,6 +49,32 @@ export default function LoginPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isResending, setIsResending] = useState(false);
 
+  // Coordinated slow graceful appearance with starting animation
+  const [shouldAnimateIn, setShouldAnimateIn] = useState(false);
+
+  useEffect(() => {
+    const hasSeen = typeof window !== "undefined" ? sessionStorage.getItem("gh_intro_seen") : null;
+    if (hasSeen) {
+      setShouldAnimateIn(true);
+      return;
+    }
+
+    const onFade = () => {
+      setShouldAnimateIn(true);
+    };
+
+    window.addEventListener("gh_splash_fade", onFade);
+
+    const fallback = setTimeout(() => {
+      setShouldAnimateIn(true);
+    }, 1650);
+
+    return () => {
+      window.removeEventListener("gh_splash_fade", onFade);
+      clearTimeout(fallback);
+    };
+  }, []);
+
   const allowedDomain = process.env.NEXT_PUBLIC_ALLOWED_EMAIL_DOMAIN;
 
   // Sample credentials for quick testing
@@ -147,14 +173,21 @@ export default function LoginPage() {
         }
       }
     } catch (err: any) {
-      setErrorMsg(err?.message || "An unexpected error occurred. Please try again.");
+      console.error("Login submission error:", err);
+      const msg = typeof err === "string" ? err : err?.message || err?.error_description || "An unexpected error occurred. Please try again.";
+      setErrorMsg(msg);
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <div className="relative min-h-[calc(100vh-140px)] py-10 sm:py-16 flex flex-col justify-center overflow-hidden">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={shouldAnimateIn ? { opacity: 1 } : { opacity: 0 }}
+      transition={{ duration: 0.9, ease: "easeOut" }}
+      className="relative min-h-[calc(100vh-140px)] py-10 sm:py-16 flex flex-col justify-center overflow-hidden"
+    >
       {/* Background Ambient Glows */}
       <div className="absolute top-1/4 -left-36 w-80 h-80 rounded-full bg-primary/15 blur-[120px] pointer-events-none animate-pulse" />
       <div
@@ -162,12 +195,13 @@ export default function LoginPage() {
         style={{ animationDelay: "1.5s" }}
       />
 
+      {/* Top-Right Background Decoration */}
       <HeroDecoration />
 
       <motion.main
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        initial={{ opacity: 0, y: 24 }}
+        animate={shouldAnimateIn ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+        transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
         className="relative z-10 max-w-md mx-auto px-6 w-full flex flex-col gap-5"
       >
         {/* Top Header */}
@@ -389,6 +423,18 @@ export default function LoginPage() {
                     className="text-amber font-semibold hover:underline"
                   >
                     Register here →
+                  </button>
+                </div>
+              )}
+              {errorMsg.toLowerCase().includes("unexpected") && (
+                <div className="text-[11px] text-text-dim pt-1.5 border-t border-status-danger/20 flex items-center justify-between gap-2">
+                  <span>Server took too long or had an error.</span>
+                  <button
+                    type="button"
+                    onClick={handleFillStudent}
+                    className="text-amber font-semibold hover:underline flex items-center gap-1"
+                  >
+                    Use Demo Access →
                   </button>
                 </div>
               )}
@@ -624,6 +670,6 @@ export default function LoginPage() {
           )}
         </div>
       </motion.main>
-    </div>
+    </motion.div>
   );
 }
